@@ -1,0 +1,56 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("input form");
+    </script>
+
+    <style>
+        .box {
+            display: flex;
+            flex-flow: row-reverse wrap;
+        }
+
+        /*grow and shirnk*/
+
+        .box-scale .item {
+            box-sizing: border-box;
+            border: 1px solid #742435;
+            flex: 1 1 auto;
+            width: 40%;
+        }
+
+        /*no grow and no shirnk*/
+
+        .box-no-scale .item {
+            box-sizing: border-box;
+            border: 1px solid #742435;
+            flex: 0 0 auto;
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-scale">
+        <div class="item">
+            First item
+        </div>
+        <div class="item">
+            Second item
+        </div>
+        <div class="item">
+            Third item
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

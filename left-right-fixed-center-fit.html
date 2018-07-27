@@ -1,0 +1,113 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("input form");
+    </script>
+    <style>
+        .wrapper {
+            border: 1px solid #276543;
+            box-sizing: content-box;
+            padding: 10px 15px;
+        }
+
+        .left,
+        .right {
+            width: 120px;
+            box-sizing: border-box;
+            border: 2px solid #782311;
+            
+        }
+
+        .center {
+            border: 2px solid #782311;
+            box-sizing: border-box;
+        }
+
+        /*absolute*/
+        .wrapper-absolute {
+            position: relative;
+        }
+        .wrapper-absolute .left {
+            position: absolute;
+            left: 0;
+        }
+        .wrapper-absolute .right {
+            position: absolute;
+            right: 0;
+            top: 10px; /*这个很重要，因为right在偏离文档流以后，垂直位置默认是自己原来的位置*/
+        }
+        .wrapper-absolute .center {
+            margin: 0 140px;
+        }
+
+        /*float*/
+        .wrapper-float {
+            overflow: auto;
+        }
+        .wrapper-float .left {
+            float: left;
+        }
+        .wrapper-float .right {
+            float: right;
+        }
+        .wrapper-float .center {
+            margin: 0 140px;
+        }
+
+        /*cup*/
+        .wrapper-cup {
+            overflow: auto;
+            border: 1px solid #333333;
+            padding: 10px 135px;
+        }
+        .wrapper-cup .center {
+            float: left;
+            width: 100%;
+            
+        }
+        .wrapper-cup .left {
+            float: left;
+            margin-left: -100%;
+            position: relative;
+            left: -125px;
+        }
+        .wrapper-cup .right {
+            float: left;
+            margin-left: -120px;
+            position: relative;
+            right: -125px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper wrapper-absolute">
+        <div class="left">我是左边</div>
+        <div class="center">我是中间</div>
+        <div class="right">我是右边</div>
+    </div>
+    <br />
+    <div class="wrapper wrapper-float">
+        <div class="left">我是左边</div>
+        <div class="right">我是右边</div>
+        <div class="center">我是中间</div><!-- 这个顺序很重要 -->
+    </div>
+    <br />
+    <div class="wrapper wrapper-cup">
+        <div class="center">我是中间</div>
+        <div class="left">我是左边</div>
+        <div class="right">我是右边</div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

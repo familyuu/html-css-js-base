@@ -1,0 +1,137 @@
+<!-- 左边固定，右边自适应布局 -->
+
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("input form");
+    </script>
+    <style>
+        .wrapper {
+            padding: 15px 20px;
+            border: 3px dashed #ff6c60;
+        }
+        .left {
+            width: 120px;
+            border: 4px solid #274654;
+        }
+        .right {
+            margin-left: 20px;
+            border: 4px solid #274654;
+        }
+
+        /*inline-block*/
+        .wrapper-inline-block {
+            box-sizing: content-box;
+            font-size: 0;
+        }
+        .wrapper-inline-block .left,
+        .wrapper-inline-block .right {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .wrapper-inline-block .right {
+            width: calc(100% - 140px);
+        }
+
+        /*float*/
+        .wrapper-float {
+            overflow: auto;
+            box-sizing: content-box;
+        }
+        .wrapper-float .left,
+        .wrapper-float .right {
+            float: left;
+            box-sizing: border-box;
+        }
+        .wrapper-float .right {
+            width: calc(100% - 140px);
+        }
+
+        /*float + margin-left*/
+        .wrapper-float-marginleft {
+            overflow: auto;
+        }
+        .wrapper-float-marginleft .left {
+            float: left;
+        }
+        .wrapper-float-marginleft .right {
+            margin-left: 143px;
+        }
+
+        /*absolute + margin-left*/
+        .wrapper-absolute {
+            position: relative;
+        }
+        .wrapper-absolute .left {
+            position: absolute;
+        }
+        .wrapper-absolute .right {
+            margin-left: 150px;
+        }
+
+        /*float + bfc*/
+        .wrapper-float-bfc {
+            overflow: auto;
+        }
+        .wrapper-float-bfc .left {
+            float: left;
+            margin-right: 20px;
+        }
+        .wrapper-float-bfc .right {
+            margin-left: 0;
+            overflow: auto;
+        }
+
+        /*flex*/
+        .wrapper-flex {
+            display: flex;
+            align-items: flex-start;
+        }
+        .wrapper-flex .left {
+            flex: 0 0 auto;
+        }
+        .wrapper-flex .right {
+            flex: 1 1 auto;
+        }
+
+        /*grid*/
+        .wrapper-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: flex-start;
+        }
+        .wrapper-grid .left,
+        .wrapper-grid .right {
+            box-sizing: border-box;
+        }
+        .wrapper-grid .left {
+            grid-column: 1;
+        }
+        .wrapper-grid .right {
+            grid-column: 2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper wrapper-grid" id="wrapper">
+        <div class="left">
+            左边固定宽度，高度不一定，有可能很高，有可能很低
+        </div>
+        <div class="right">右边宽度自适应，可能比左侧低，基本的样式是，两个div相距20px, 左侧div宽 120px</div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

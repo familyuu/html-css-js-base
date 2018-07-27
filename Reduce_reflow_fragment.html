@@ -1,0 +1,46 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("body up");
+    </script>
+
+</head>
+
+<body>
+    <div class=""></div>
+    <select>
+        <option style="display: none;" value=""></option>
+    </select>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var date = new Date();
+        fragement = document.createDocumentFragment();//Use DocumentFragemengt for cache the reflow operation
+
+        for (var i = 0; i < 70000; i++) {
+            var tmpNode = document.createElement("div");
+            tmpNode.innerHTML = "test" + i;
+            fragement.appendChild(tmpNode);
+        }
+
+        document.body.appendChild(fragement);
+        console.log("speed time", new Date() - date);
+    });
+
+    var options = ['ff', 'gg', 'hh', 'ii'];
+    var selectNode = document.getElementsByTagName("select");
+    for (i = 0; i < options.length; i++) {
+        var optionNode = document.createElement("option");
+        optionNode.innerHTML = options[i];
+        selectNode.appendChild(optionNode);
+    }
+    
+</script>
+
+</html>

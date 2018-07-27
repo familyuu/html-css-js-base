@@ -1,0 +1,46 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("input form");
+    </script>
+    <style>
+        .file-filed-div {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="">
+        <form name="inputForm" class="" enctype="multipart/form-data" method="POST" action="/">
+            <div class="file-filed-div">
+                <label>Ordinary input file</label>
+                <input id="fileFiled" name="file" type="file" accept=".txt, .doc, .mp3" />Add File
+            </div>
+            <div class="file-filed-div">
+                <label>CSS 1</label>
+                <input class="css-1" name="file" type="file" accept=".txt, .doc, .mp3" />Add File
+            </div>
+            <div class="file-filed-div">
+                <label>CSS 2</label>
+                <input class="css-2" name="file" type="file" accept=".txt, .doc, .mp3" />Add File
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    var fileArr = document.getElementById("#fileFiled").files;
+    console.log(fileArr);
+    //instance an form object
+    var formData = new FormData();
+
+</script>
+
+</html>

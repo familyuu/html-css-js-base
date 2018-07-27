@@ -1,0 +1,31 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <script type="text/javascript">
+        alert("body up");
+    </script>
+
+</head>
+
+<body>
+    <div class=""></div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var date = new Date();
+        for (var i = 0; i < 70000; i++) {
+            var tmpNode = document.createElement("div");
+            tmpNode.innerHTML = "test" + i;
+            document.body.offsetHeight; // 获取body的真实值
+            document.body.appendChild(tmpNode);
+        }
+        console.log("speed time", new Date() - date);
+    });
+</script>
+
+</html>
