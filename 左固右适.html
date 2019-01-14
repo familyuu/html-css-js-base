@@ -1,0 +1,152 @@
+<!-- 左边固定，右边自适应两栏布局 -->
+
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>左边固定，右边自适应两栏布局</title>
+    <style>
+        .wrapper {
+            padding: 15px 20px;
+            border: 3px dashed #ff6c60;
+            margin-bottom: 20px;
+        }
+
+        .left {
+            width: 120px;
+            border: 4px solid #274654;
+        }
+
+        .right {
+            border: 4px solid #274654;
+        }
+
+        /*inline-block*/
+        .wrapper-inline-block {
+            box-sizing: content-box;
+            font-size: 0;
+            /** inline-block元素之間有5px的默認空白。*/
+        }
+
+        .wrapper-inline-block .left {
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .wrapper-inline-block .right {
+            width: calc(100% - 140px);
+
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /*flex*/
+        .wrapper-flex {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .wrapper-flex .left {
+            flex: 0 0 auto;
+        }
+
+        .wrapper-flex .right {
+            flex: 1 1 auto;
+            margin-left: 20px;
+        }
+
+        /*grid*/
+        .wrapper-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: flex-start;
+        }
+
+        .wrapper-grid .left {
+            grid-column: 1;
+            box-sizing: border-box;
+        }
+
+        .wrapper-grid .right {
+            grid-column: 2;
+            box-sizing: border-box;
+            margin-left: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 双inline-block -->
+    <div class="wrapper wrapper-inline-block">
+        <div class="left">
+            双inline-block,双inline-block,双inline-block,双inline-block,双inline-block,双inline-block,双inline-block,双inline-block,双inline-block
+        </div>
+        <div class="right" style="margin-left: 20px;">
+            右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px
+        </div>
+    </div>
+
+    <!-- 双float -->
+    <div class="wrapper" style="overflow: auto; box-sizing: content-box;">
+        <div class="left" style="float: left; box-sizing: border-box;">
+            双float双float双float双float双float双float双float双float双float双float双float双float双float双float双float双float双float双float
+        </div>
+        <div class="right" style="float: left; box-sizing: border-box; margin-left: 20px; width: calc(100% - 140px);">右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px</div>
+    </div>
+
+    <!-- float+margin-left -->
+    <div class="wrapper" style="overflow: auto">
+        <div class="left" style="float: left; box-sizing: border-box;">
+            float+margin-left float+margin-left float+margin-left float+margin-left float+margin-left float+margin-left
+        </div>
+        <div class="right" style="margin-left: 140px; box-sizing: border-box;">
+            右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px</div>
+    </div>
+
+    <!-- absolute+margin-left -->
+    <div class="wrapper" style="position: relative; margin-bottom: 200px;">
+        <div class="left" style="position: absolute;">
+            absolute+margin-left absolute+margin-left absolute+margin-left absolute+margin-left absolute+margin-left absolute+margin-left
+        </div>
+        <div class="right" style="margin-left: 140px;">右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px</div>
+    </div>
+
+    <!-- float + bfc -->
+    <div class="wrapper" style="overflow: auto; background-color: blueviolet;">
+        float+bfc的方式，必须给float元素设置右边距 margin-right: 20px;才能够实现左右之间相差20px距离。
+        <div class="left" style="float: left; margin-right: 20px;">
+            float + bfc float + bfc float + bfc float + bfc float + bfc float + bfc float + bfc float + bfc float + bfc
+        </div>
+        <div class="right" style="overflow: auto;">
+            右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px
+        </div>
+    </div>
+
+    <!-- flex -->
+    <div class="wrapper wrapper-flex">
+        <div class="left">
+            flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案flex方案
+        </div>
+        <div class="right">右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px</div>
+    </div>
+
+    <!-- grid -->
+    <div class="wrapper wrapper-grid">
+        <div class="left">
+            grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案grid方案
+        </div>
+        <div class="right">右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px右边宽度自适应，距離左側20px</div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

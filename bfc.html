@@ -6,34 +6,28 @@
     <meta name="viewport" content="width=device-width" initial-scale=1>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>BFC</title>
-
-    <script type="text/javascript">
-        alert("Start!");
-    </script>
-
     <style>
-        .bfc-box {
+        .bfc-box-overflow {
             overflow: hidden;
-            /* float: left; */
+        }
+
+        .bfc-box-float {
+            float: left;
+            border-width: 20px;
+            border-color: aqua;
+            border-style: solid;
+            background-color: blueviolet;
+            width: 50%;
             /* float: inherit; */
             /* float: right; */
             /* float: unset; */
-            /* position: absolute; */
+        }
+
+        .bfc-box-position {
+            position: absolute;
+            top: 700px;
+            margin-bottom: 100px;
             /* position: fixed; */
-        }
-
-        .box-1 {
-            margin-bottom: 20px;
-            background-color: bisque;
-            width: 100px;
-            height: 100px;
-        }
-
-        .box-2 {
-            margin-top: 20px;
-            background-color: brown;
-            width: 100px;
-            height: 100px;
         }
 
         .box-3 {
@@ -50,45 +44,6 @@
             height: 100px;
         }
 
-        .box-4 {
-            margin-top: 100px;
-            margin-left: 20px;
-            float: left;
-            /*box-2也是一个bfc*/
-            /* overflow: hidden; */
-            /*这样触发的bfc和float触发的不一样哦*/
-            background-color: brown;
-            width: 100px;
-            height: 100px;
-        }
-
-        .box-3-1 {
-            width: 20px;
-            height: 20px;
-            background-color: blue;
-            margin-bottom: 10px;
-        }
-
-        .box-3-2 {
-            margin-top: 10px;
-            width: 20px;
-            height: 20px;
-            background-color: blue;
-        }
-
-        .box-5 {
-            margin-bottom: 20px;
-            background-color: bisque;
-            width: 100px;
-            height: 100px;
-        }
-
-        .box-6 {
-            margin-top: 20px;
-            background-color: brown;
-            width: 100px;
-            height: 100px;
-        }
         .margin-no-stack .wrap {
             overflow: hidden;
         }
@@ -96,31 +51,35 @@
 </head>
 
 <body>
-    <div class="bfc-box margin-stack">
-        <div class="box-1">
+    <div class="bfc-box-overflow">
+        <div style="margin-bottom: 20px; height: 100px; background-color: bisque;">
             bfc内部的box垂直排列，Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加， 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
         </div>
-        <div class="box-2"></div>
-    </div>
-    <div class="bfc-box inner-box-float">
-        <div class="box-3">
-            <div class="box-3-1"></div>
-            <div class="box-3-2"></div>
-        </div>
-        <div class="box-4">bfc内部的元素设置了float属性后，也都成为了一个个bfc</div>
+        <div style="margin-top: 20px; height: 100px; background-color: brown;"></div>
     </div>
 
-    <div class="bfc-box margin-no-stack">
-        <div class="box-5">
+    <div class="bfc-box-float">
+        <div style="margin-bottom: 20px; height: 100px; background-color: bisque;">
+            bfc内部每个元素的margin box的左边与包含块的border box的左边相接触。
         </div>
-        <div class="wrap">
-            <div class="box-6">通过包装一个div，避免 margin重叠</div>
+        <div style="margin-top: 20px; height: 100px; width: 100px; background-color: brown;">
+            bfc内部每个元素的margin box的左边与包含块的border box的左边相接触。
         </div>
-
     </div>
+
+    <div style="float: left; background-color: rgb(226, 43, 211); height: 100px;width: 100%;">
+        BFC的区域不会与float box重叠。
+    </div>
+
+    <div class="bfc-box-position" style="height: 100px; width: 50%; background-color:rgb(209, 92, 194);">
+        <div style="float: left; width: 600px; height: 100px; background-color: bisque;">
+            计算BFC的高度时，内部的float的盒子也参与计算计算BFC的高度时，内部的float的盒子也参与计算 计算BFC的高度时，内部的float的盒子也参与计算
+        </div>
+        <div style="float: left; height: 100px; background-color: brown;">
+            计算BFC的高度时，内部的float的盒子也参与计算 计算BFC的高度时，内部的float的盒子也参与计算 计算BFC的高度时，内部的float的盒子也参与计算
+        </div>
+    </div>
+
 </body>
-<script>
-
-</script>
 
 </html>

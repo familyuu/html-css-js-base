@@ -1,0 +1,88 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>两侧固定，中间自适应布局</title>
+
+    <style>
+        .wrapper {
+            border: 1px dashed #276543;
+            box-sizing: content-box;
+            padding: 10px 15px;
+            margin-bottom: 100px;
+        }
+
+        .left,
+        .right {
+            width: 120px;
+            box-sizing: border-box;
+            border: 2px solid #a02810;
+            
+        }
+
+        .center {
+            border: 2px solid #71c98b;
+            box-sizing: border-box;
+        }
+
+        /* cup */
+        .wrapper-cup {
+            border: 3px dashed #71c98b;
+            overflow: auto;
+            padding-left: 200px;
+            padding-right: 150px;
+        }
+        #center {
+            background-color:#a02810;
+            width: 100%;
+            float: left;
+        }
+        #left {
+            background-color:#71c98b;
+            width: 200px;
+            float: left;
+
+            margin-left: -100%;
+
+            position: relative;
+            right: 200px;
+        }
+        #right {
+            background-color:#71c98b;
+            width: 150px;
+            float: left;
+
+            margin-right: -100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- absolute -->
+    <div class="wrapper" style="position: relative;">
+        <div class="left" style="position: absolute; left: 0;">我是左边</div>
+        <div class="center" style="margin-left: 120px; margin-right: 120px;">我是中间 absolute</div>
+        <div class="right" style="position: absolute; right: 0; top: 10px;">要设置top哦！这个很重要，因为right在偏离文档流以后，垂直位置默认是自己原来的位置</div>
+    </div>
+    <!-- float -->
+    <div class="wrapper">
+        <div class="left" style="float: left;">我是左边</div>
+        <div class="right" style="float: right;">我是右边</div><!-- 这个顺序很重要 -->
+        <div class="center" style="margin-left: 120px; margin-right: 120px;">我是中间 float</div>
+    </div>
+    
+    <!-- 圣杯 -->
+    <div class="wrapper-cup">
+        <div id="center">我是中间</div>
+        <div id="left">我是左边</div>
+        <div id="right">我是右边</div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>
