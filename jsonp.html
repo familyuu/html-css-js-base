@@ -1,0 +1,43 @@
+<!DOCTYPE=html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+</head>
+
+<body>
+</body>
+<script>
+    var localHandler = function (data) {
+        alert('我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：' + data.result);
+    };
+    var jsonScript = document.createElement('script');
+    jsonScript.src = "http://10.240.217.156:3000?callback=localHandler";
+    jsonScript.type = "text/javascript";
+    document.getElementsByTagName('head')[0].appendChild(jsonScript);
+
+    // backend code
+    // var http = require('http');
+    // var parse = require('url').parse;
+    // var join = require('path').join;
+    // var fs = require('fs');
+    // var URLSearchParams = require('url').URLSearchParams;
+
+    // var root = __dirname;
+    // var server = http.createServer(function (req, res) {
+    //     var url = parse(req.url);
+    //     var search = url.query;
+    //     const searchParams = new URLSearchParams(search);
+    //     var callback = searchParams.get('callback');
+    //     console.log(callback);
+    //     res.end(callback + "({result: 'XXXXXXXXXXXXXXXXXXXXXX'})");
+    // });
+
+    // server.listen(3000);
+
+</script>
+
+</html>
